@@ -1,5 +1,6 @@
 package com.dice;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,19 +46,21 @@ public class DiceHomeWork {
 			String url = "https://www.dice.com";
 			driver.get(url);
 
-			driver.findElement(By.cssSelector("#search-field-keyword")).clear();
-			driver.findElement(By.cssSelector("#search-field-keyword")).sendKeys(list.get(i));
+			driver.findElement(By.id("search-field-keyword")).clear();
+			  driver.findElement(By.id("search-field-keyword")).sendKeys(list.get(i));
 
 			String zipCode = "02111";
-			driver.findElement(By.cssSelector("#search-field-location")).clear();
-			driver.findElement(By.cssSelector("#search-field-location")).sendKeys(zipCode);
+			 driver.findElement(By.id("search-field-location")).clear();
+			  driver.findElement(By.id("search-field-location")).sendKeys(zipCode);
 
-			driver.findElement(By.cssSelector("#findTechJobs")).click();
+			  driver.findElement(By.id("findTechJobs")).click();
 
-			String count = driver.findElement(By.cssSelector("#posiCountId")).getText();
+			String count = driver.findElement(By.id("posiCountId")).getText();
 			newList.add(list.get(i) + "-" + count.replaceAll(",", ""));
 		}
 
+		driver.close();
+		System.out.println("TEST COMPLeTED- " + LocalDateTime.now());
 		System.out.println( newList );
 
 	}
